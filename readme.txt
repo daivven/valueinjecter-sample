@@ -1,0 +1,1 @@
+the silverlight solution is in the silverlight folder

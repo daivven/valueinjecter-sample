@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+    $(function() {
+        var colors = ['red', 'blue', 'green', 'purple'];
+        var colorIndex = -1;
+        $('.editor-label').each(function() {
+        $(this).html($(this).text().replace(/([A-Z][a-z0-9]+)/g, function($0, $1) {
+                colorIndex++;
+                return '<span style="color:' + colors[colorIndex % colors.length] + '">' + $1 + '</span>';
+            }));
+        });
+    });
+
+</script>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">            
+                <h1>value injecter sample mvc application</h1>
+            </div>
+            <div id="omu">
+            <script src="http://stackoverflow.com/users/flair/112100.js?theme=clean" type="text/javascript"></script>
+            </div>
+            
+            <div id="menucontainer">
+            
+                <ul id="menu">              
+                    <li><%= Html.ActionLink("ViewModel To/From Entity", "Index", "ViewModelToEntitySample")%></li>
+                    <li><%= Html.ActionLink("Request To Entity", "Index", "RequestToEntitySample")%></li>
+                    <li><%= Html.ActionLink("FormCollection To Entity", "Index", "FormCollectionToEntitySample")%></li>
+                    <li><%= Html.ActionLink("ViewModel To/From Entities", "Index", "ViewModelToEntitiesSample")%></li>
+                    <li><%= Html.ActionLink("Tiny Controller", "Index", "Tiny")%></li>
+                    <li><%= Html.ActionLink("Unflat to/from flat model", "Index", "FlatUnflat")%></li>
+                </ul>
+            
+            </div>
+        </div>
+
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
